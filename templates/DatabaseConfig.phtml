@@ -1,0 +1,80 @@
+<p>Next we need to create the database <code>config/db.php</code>. This file
+  will allow us to connect to your <span class="text-success fw-bold">previously created</span> database.</p>
+<div class="alert alert-danger" id="connection-error" style="display:none"></div>
+<form method="post" id="db-form" action="./createDB">
+  <div class="form-group row mb-2">
+    <label for="username-input" class="col-3 col-form-label">Username</label>
+    <div class="col-9">
+      <input class="form-control" id="username-input" name="username" />
+      <div class="badge badge-danger" id="username-error" style="display:none"></div>
+    </div>
+  </div>
+  <div class="form-group row mb-2">
+    <label for="password-input" class="col-3 col-form-label">Password</label>
+    <div class="col-9">
+      <input class="form-control" id="password-input" name="password" />
+      <div class="badge bg-danger" id="password-warning" style="display:none">While a connection without a password
+        is possible, it is not recommended.</div>
+    </div>
+  </div>
+  <div class="form-group row mb-2">
+    <label for="database-input" class="col-3 col-form-label">Database name</label>
+    <div class="col-9">
+      <input class="form-control" id="database-input" name="dbname" value="canopy3" />
+      <div class="badge bg-danger" id="database-error" style="display:none"></div>
+    </div>
+  </div>
+  <div class="form-group row mb-2">
+    <label for="host-input" class="col-3 col-form-label">Host</label>
+    <div class="col-9">
+      <input class="form-control" id="host-input" name="host" value="localhost" />
+    </div>
+  </div>
+  <div class="form-group row mb-2">
+    <label for="port-input" class="col-3 col-form-label">Port</label>
+    <div class="col-9">
+      <input class="form-control" id="port-input" name="port" />
+    </div>
+  </div>
+  <div class="form-group row mb-2">
+    <label for="driver-input" class="col-3 col-form-label">Driver</label>
+    <div class="col-9">
+      <select id="driver-input" class="form-control">
+        <option value="pdo_mysql">MySQL/MariaDB</option>
+        <option value="pdo_pgsql">PostGreSQL</option>
+      </select>
+    </div>
+  </div>
+
+  <code class="bg-light d-block p-3 mt-3 text-dark" id="db-config">
+    &lt;&#63;php<br>
+
+    $connectionParams = [<br>
+    'user' => '<span id="username-config"></span>',<br>
+    'password' => '<span id="password-config"></span>',<br>
+    'dbname' => '<span id="database-config"></span>',<br>
+    'host' => '<span id="host-config"></span>',<br>
+    'port' => '<span id="port-config"></span>',<br>
+    'driver' => '<span id="driver-config"></span>',<br>
+    ];
+  </code>
+
+  <?php if (!$t->configWritable->is):?>
+  <div class="text-center">
+    <p>Your <code>config/</code> directory is not writable. After testing you can copy the above into
+      <code><?=$t->configDirectory?>db.php</code>
+    </p>
+  </div>
+  <?php endif;?>
+  <div class="text-center my-4">
+    <button type="button" class="btn btn-warning" id="test-connection" disabled>Test connection</button>
+  </div>
+  <div class="alert alert-success text-center" id="successful-test" style="display:none">Connection successful!</div>
+  <?php if ($t->configWritable->is):?>
+  <div class="text-center">
+    <button type="submit" class="btn btn-primary mx-auto" style="display:none" id="save-button">Save database
+      configuration
+      file</button>
+  </div>
+  <?php endif;?>
+</form>

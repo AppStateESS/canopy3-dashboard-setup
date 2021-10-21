@@ -1,0 +1,40 @@
+<p>Canopy 3 needs the following file: <code><?=$t->c3Dir?>config/resourcesUrl.php</code></p>
+<p> The file sets URL defines for three resource directories:</p>
+<ul>
+  <li><code><?=$t->c3Dir?>resources/themes/</code></li>
+  <li><code><?=$t->c3Dir?>resources/plugins/</code></li>
+  <li><code><?=$t->c3Dir?>resources/dashboards/</code></li>
+</ul>
+<p>Canopy3 depends on this file to serve Javascript and CSS files to the browser.</p>
+<p>I am guessing your resource URL is below. Please edit the address if it is incorrect.</p>
+<form method="post" action="d/Setup/Setup/createResourceUrl">
+  <div class="row mb-4">
+    <div class="col-sm-6">
+      <input type="text" name="resourcesUrl" id="resourcesUrl" value="<?=$t->resourcesUrl?>" class="form-control" />
+    </div>
+  </div>
+
+  <?php if ($t->configWritable->true):?>
+  <p>Your <code><?=$t->c3Dir?>config/</code> directory is writable so we can
+    <button type="submit" class="btn btn-outline-primary btn-sm">create the resourcesUrl.php file for you.</button>
+  </p>
+  <p>or</p>
+  <?php else:?>
+  <p>Your <code><?=$t->c3Dir?>config/</code> directory is <strong>not</strong> writable so we are unable to write the
+    file
+    for you.
+  </p>
+
+  <?php endif;?>
+</form>
+<p>You can copy the information below and paste it into the file: <code><?=$t->c3Dir?>config/resourcesUrl.php</code></p>
+<div class="bg-light border-dark p-3">
+  <code>
+    &lt;&#63;php<br />
+
+    define('C3_RESOURCES_URL', '<span class="saveUrl"></span>');<br />
+    define('C3_THEMES_URL', '<span class="saveUrl"></span>themes/');<br />
+    define('C3_PLUGINS_URL', '<span class="saveUrl"></span>plugins/');<br />
+    define('C3_DASHBOARDS_URL', '<span class="saveUrl"></span>dashboards/');<br />
+  </code>
+</div>

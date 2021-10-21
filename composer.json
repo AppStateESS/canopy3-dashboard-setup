@@ -1,0 +1,9 @@
+{
+  "name": "appstateess/canopy3-dashboard-setup",
+  "description": "The dashboard for the initial setup of Canopy 3",
+  "type": "canopy3-dashboard",
+  "license": "MIT",
+  "require": {
+    "composer/installers": "~1.12"
+  }
+}
