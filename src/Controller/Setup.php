@@ -32,6 +32,9 @@ class Setup extends \Canopy3\Controller
         $this->setupFileExists = is_file(C3_DIR . 'config/setup.php');
         $this->resourcesConfigExists = is_file(C3_DIR . 'config/resourcesUrl.php');
         $this->databaseConfigExists = is_file(C3_DIR . 'config/db.php');
+        if (!$this->resourceConfigExists) {
+            SetupFactory::defaultResourceUrls();
+        }
         $this->view = new SetupView;
     }
 
@@ -44,7 +47,7 @@ class Setup extends \Canopy3\Controller
             }
         } else {
             switch ($command) {
-                case 'view':
+                default:
                     return Response::themed($this->displayStage());
             }
         }
