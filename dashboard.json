@@ -1,0 +1,7 @@
+{
+  "name": "canopy3-dashboard-setup",
+  "directory": "canopy3-dashboard-setup",
+  "namespace": "Setup",
+  "version": "1.0.0",
+  "repo": "https://github.com/AppStateESS/canopy3-dashboard-setup.git"
+}
