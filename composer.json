@@ -3,6 +3,7 @@
   "description": "The dashboard for the initial setup of Canopy 3",
   "type": "canopy3-dashboard",
   "license": "MIT",
+  "version": "1.0.0",
   "require": {
     "composer/installers": "~1.12"
   }
