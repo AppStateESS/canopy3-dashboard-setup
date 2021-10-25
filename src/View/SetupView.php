@@ -13,21 +13,20 @@ use Canopy3\HTTP\Header;
 class SetupView
 {
 
-    const templateDir = C3_DASHBOARDS_DIR . 'Setup/templates/';
+    const templateDir = C3_DASHBOARDS_DIR . 'canopy3-dashboard-setup/templates/';
+    const javascriptUrl = C3_DASHBOARDS_URL . 'canopy3-dashboard-setup/javascript/';
 
     private Template $template;
-    private string $javascriptUrl;
 
     public function __construct()
     {
         $this->template = new Template(self::templateDir);
-        $this->javascriptUrl = C3_DASHBOARDS_URL . 'Setup/javascript/';
         Header::singleton()->setSiteTitle('Administration Setup');
     }
 
     public function createDatabaseConfig()
     {
-        $header = Header::singleton()->addScript($this->javascriptUrl . 'databaseConfig.js',
+        $header = Header::singleton()->addScript(self::javascriptUrl . 'databaseConfig.js',
             ['defer' => true]);
         $configDirectory = C3_DIR . 'config/';
         $values = [];
@@ -41,7 +40,7 @@ class SetupView
     {
         $header = Header::singleton();
         $header->setPageTitle('Create Resources Config');
-        $header->addScript($this->javascriptUrl . 'updateResource.js',
+        $header->addScript(self::javascriptUrl . 'updateResource.js',
             ['defer' => true]);
         $header->addScriptValue('resourcesUrl', C3_RESOURCES_URL);
         $values['resourcesUrl'] = C3_RESOURCES_URL;
@@ -49,6 +48,14 @@ class SetupView
         $values['configWritable'] = is_writable(C3_DIR . 'config/');
         return $this->wrapper('Create System File',
                 $this->template->render('CreateSystemConfig', $values));
+    }
+
+    public function createTables()
+    {
+        $header = Header::singleton();
+        $header->setPageTitle('Create Required Tables');
+
+        return $this->wrapper('Create tables', $this->template->render('CreateTables'));
     }
 
     public function resourceFileError()
