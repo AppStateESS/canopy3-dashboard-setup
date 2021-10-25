@@ -48,10 +48,21 @@ class SetupFactory
     {
         $urlConfigFilePath = C3_DIR . 'config/resourcesUrl.php';
         $values['resourcesUrl'] = $request->POST->resourcesUrl;
-        $template = new \Canopy3\Template(Template::dashboardDirectory('Setup'));
+        $template = new \Canopy3\Template(Template::dashboardDirectory('canopy3-dashboard-setup'));
         $content = "<?php\n" . $template->render('ResourcesUrl.txt', $values);
         $result = file_put_contents($urlConfigFilePath, $content);
         return (bool) $result;
+    }
+
+    public static function defaultResourceUrls()
+    {
+        $url = preg_replace('@public/$@', '',
+            \Canopy3\HTTP\Server::getCurrentUri());
+
+        define('C3_RESOURCES_URL', $url . 'resources/');
+        define('C3_DASHBOARDS_URL', C3_RESOURCES_URL . 'dashboards/');
+        define('C3_PLUGINS_URL', C3_RESOURCES_URL . 'plugins/');
+        define('C3_THEMES_URL', C3_RESOURCES_URL . 'themes/');
     }
 
     public static function testDB(Request $request)
