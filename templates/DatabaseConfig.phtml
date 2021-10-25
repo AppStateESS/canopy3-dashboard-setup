@@ -1,7 +1,7 @@
 <p>Next we need to create the database <code>config/db.php</code>. This file
   will allow us to connect to your <span class="text-success fw-bold">previously created</span> database.</p>
 <div class="alert alert-danger" id="connection-error" style="display:none"></div>
-<form method="post" id="db-form" action="./createDB">
+<form method="post" id="db-form" action="<?=$t->homeUrl?>d/Setup/Setup/createDB">
   <div class="form-group row mb-2">
     <label for="username-input" class="col-3 col-form-label">Username</label>
     <div class="col-9">
