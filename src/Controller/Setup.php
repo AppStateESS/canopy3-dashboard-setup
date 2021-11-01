@@ -70,7 +70,7 @@ class Setup extends \Canopy3\Controller
     {
         $values = $request->POST->getValues();
         if (SetupFactory::createDBFile($values)) {
-            return Response::redirect('./');
+            return Response::redirect('./d/Setup/Setup/view');
         } else {
             return Response::redirect('./d/Setup/Setup/databaseFailed');
         }
