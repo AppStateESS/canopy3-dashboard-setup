@@ -49,10 +49,6 @@ const testFields = () => {
   }
 }
 
-saveButton.addEventListener('click', () => {
-  console.log('save file')
-})
-
 dbForm.addEventListener('keydown', (e) => {
   if (e.keyCode == 13) {
     e.preventDefault()
