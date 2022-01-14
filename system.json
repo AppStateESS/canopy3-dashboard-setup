@@ -1,7 +1,19 @@
 {
   "name": "canopy3-dashboard-setup",
+  "description": "Assists with initial installation of Canopy 3",
   "directory": "canopy3-dashboard-setup",
   "namespace": "Setup",
   "version": "1.0.0",
-  "repo": "https://github.com/AppStateESS/canopy3-dashboard-setup.git"
+  "type": "canopy3-dashboard",
+  "repository": "https://github.com/AppStateESS/canopy3-dashboard-setup.git",
+  "releaseAPI": "https://github.com/AppStateESS/canopy3-dashboard-setup.git",
+  "homepage": "https://github.com/AppStateESS/canopy3-dashboard-setup",
+  "title": "Canopy 3 Setup",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Matt McNaney",
+      "email": "mcnaneym@appstate.edu"
+    }
+  ]
 }
