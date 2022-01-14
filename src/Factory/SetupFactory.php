@@ -59,10 +59,10 @@ class SetupFactory
         $url = preg_replace('@public/$@', '',
             \Canopy3\HTTP\Server::getCurrentUri());
 
-        define('C3_RESOURCES_URL', $url . 'resources/');
-        define('C3_DASHBOARDS_URL', C3_RESOURCES_URL . 'dashboards/');
-        define('C3_PLUGINS_URL', C3_RESOURCES_URL . 'plugins/');
-        define('C3_THEMES_URL', C3_RESOURCES_URL . 'themes/');
+        define('C3_SYSTEMS_URL', $url . 'systems/');
+        define('C3_DASHBOARDS_URL', C3_SYSTEMS_URL . 'dashboards/');
+        define('C3_PLUGINS_URL', C3_SYSTEMS_URL . 'plugins/');
+        define('C3_THEMES_URL', C3_SYSTEMS_URL . 'themes/');
     }
 
     public static function testDB(Request $request)
