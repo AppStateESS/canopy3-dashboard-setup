@@ -42,8 +42,8 @@ class SetupView
         $header->setPageTitle('Create Resources Config');
         $header->addScript(self::javascriptUrl . 'updateResource.js',
             ['defer' => true]);
-        $header->addScriptValue('resourcesUrl', C3_RESOURCES_URL);
-        $values['resourcesUrl'] = C3_RESOURCES_URL;
+        $header->addScriptValue('resourcesUrl', C3_SYSTEMS_URL);
+        $values['resourcesUrl'] = C3_SYSTEMS_URL;
         $values['c3Dir'] = C3_DIR;
         $values['configWritable'] = is_writable(C3_DIR . 'config/');
         return $this->wrapper('Create System File',
